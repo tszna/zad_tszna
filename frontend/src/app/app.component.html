@@ -1,0 +1,47 @@
+<h1>Zadanie 1</h1>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="deviceId">
+    <th mat-header-cell *matHeaderCellDef>Device ID</th>
+    <td mat-cell *matCellDef="let element">{{ element.deviceId }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="eventDate">
+    <th mat-header-cell *matHeaderCellDef>Data zdarzenia</th>
+    <td mat-cell *matCellDef="let element">
+      {{ (element.eventDate * 1000) | date:'yyyy-MM-dd HH:mm:ss' }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef>Typ</th>
+    <td mat-cell *matCellDef="let element">
+      <span [ngClass]="appService.getTextClass(element.type)">
+        {{ element.type }}
+      </span>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef>Szczegóły</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button color="primary" class="table_button" (click)="showDetails(element)">Szczegóły</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<h1>Zadanie 2</h1>
+
+<div class="button-container">
+  <button mat-button color="accent" [disabled]="isLoading" (click)="sendRandomRequest()">Wyślij losowe żądanie</button>
+</div>
+
+<div *ngIf="isLoading" class="loader-container">
+  <div class="loader"></div>
+</div>
+
+<div *ngIf="responseMessage && !isLoading" class="response_message">
+  {{ responseMessage }}
+</div>

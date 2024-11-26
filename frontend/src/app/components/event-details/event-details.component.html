@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Szczegóły</h1>
+<div mat-dialog-content>
+  <div *ngIf="data.type === 'deviceMalfunction'">
+    <p><strong>Kod błędu:</strong> {{ data.evtData.reasonCode }}</p>
+    <p><strong>Znaczenie błędu:</strong> {{ data.evtData.reasonText }}</p>
+  </div>
+
+  <div *ngIf="data.type === 'temperatureExceeded'">
+    <p><strong>Temperatura:</strong> {{ data.evtData.temp }}°C</p>
+    <p><strong>Maksymalna możliwa temperatura:</strong> {{ data.evtData.threshold }}°C</p>
+  </div>
+
+  <div *ngIf="data.type === 'doorUnlocked'">
+    <p><strong>Data otwarcia:</strong> {{ unlockDate | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+  </div>
+
+  <div *ngIf="data.type !== 'deviceMalfunction' && data.type !== 'temperatureExceeded' && data.type !== 'doorUnlocked'">
+    <p>Brak dodatkowych informacji dla tego typu zdarzenia.</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Zamknij</button>
+</div>
