@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\Request;
 class MainController
 {
     /**
-     * Endpoint: hello
+     * Endpoint: list
      * 
      * Description: Odczytuje dane z pliku JSON znajdującego się w katalogu public/data i zwraca je jako odpowiedź w formacie JSON.
      * 
      * @return JsonResponse
      */
-    public function hello(): JsonResponse
+    public function list(): JsonResponse
     {
         $filePath = __DIR__ . '/../../public/data/events.json';
 

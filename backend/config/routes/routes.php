@@ -3,8 +3,8 @@
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
 return function (RoutingConfigurator $routes) {
-    $routes->add('hello', '/hello')
-        ->controller([App\Controller\MainController::class, 'hello'])
+    $routes->add('list', '/list')
+        ->controller([App\Controller\MainController::class, 'list'])
         ->methods(['GET']);
     
     $routes->add('action', '/action')

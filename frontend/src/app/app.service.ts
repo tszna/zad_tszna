@@ -14,7 +14,7 @@ export class AppService {
   constructor(private http: HttpClient) { }
 
   getEvents(): Observable<Event[]> {
-    return this.http.get<ApiResponse>(this.apiUrl + '/hello').pipe(
+    return this.http.get<ApiResponse>(this.apiUrl + '/list').pipe(
       map((response: ApiResponse) => response.events)
     );
   }
